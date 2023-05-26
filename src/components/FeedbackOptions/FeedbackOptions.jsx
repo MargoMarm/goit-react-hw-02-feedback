@@ -1,18 +1,20 @@
-import { ButtonOption } from './FeedbackOptions.styled';
+import { ButtonList, ListItem, ButtonOption } from './FeedbackOptions.styled';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  function capitalizeFirstLetter(string) {
+    return string[0].toUpperCase() + string.slice(1);
+  }
   return (
-    <ul>
+    <ButtonList>
       {options.map(option => (
-        <ButtonOption
-          type="button"
-          key={option}
-          onClick={() => onLeaveFeedback(option)}
-        >
-          {option}
-        </ButtonOption>
+        <ListItem key={option}>
+          {' '}
+          <ButtonOption type="button" onClick={() => onLeaveFeedback(option)}>
+            {capitalizeFirstLetter(option)}
+          </ButtonOption>
+        </ListItem>
       ))}
-    </ul>
+    </ButtonList>
   );
 };
 
